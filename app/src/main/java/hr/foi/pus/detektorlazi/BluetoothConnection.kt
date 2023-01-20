@@ -47,7 +47,15 @@ class BluetoothConnection {
                 try {
                     val inputStream = socket?.inputStream
                     val buffer = ByteArray(1024)
+                    Thread.sleep(100)
                     Log.d(TAG, inputStream?.available().toString())
+
+                    if(inputStream == null){
+                        Log.d(TAG, "null je")
+                    }else{
+                        Log.d(TAG, "nije null")
+                    }
+
                     val bytes = inputStream?.read(buffer)
                     Log.d(TAG, "Received data: " + String(buffer))
                     i++
@@ -70,6 +78,10 @@ class BluetoothConnection {
 
     fun stopThread(){
         shouldStop = true
+    }
+
+    fun stopNotThread(){
+        shouldStop = false
     }
 
     fun disconnect() {

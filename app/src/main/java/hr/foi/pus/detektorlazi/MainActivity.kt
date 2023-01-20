@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
 
                     bluetooth.connect(device.address, this)
+                    bluetooth.stopNotThread()
                     bluetooth.receiveData { data ->
                         runOnUiThread {
                             if (data != null)
