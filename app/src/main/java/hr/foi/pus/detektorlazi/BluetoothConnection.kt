@@ -59,8 +59,15 @@ class BluetoothConnection {
                     val bytes = inputStream?.read(buffer)
                     Log.d(TAG, "Received data: " + String(buffer))
                     i++
+                    Log.d(TAG, "prije pozivanja callback")
                     callback(buffer.copyOfRange(0, bytes!!))
+                    Log.d(TAG, "prije sleep")
                     Thread.sleep(1000)
+                    Log.d(TAG, "poslje sleep")
+                    if(i == 30){
+                        Log.d(TAG, "limit")
+                        disconnect()
+                    }
                     //return buffer.copyOfRange(0, bytes!!)
                 } catch (e: IOException) {
                     Log.e(TAG, "Failed to receive data from ESP32 device", e)
