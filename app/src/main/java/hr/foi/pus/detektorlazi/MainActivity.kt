@@ -2,6 +2,7 @@ package hr.foi.pus.detektorlazi
 
 import BluetoothConnection
 import android.Manifest
+import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.pm.PackageManager
@@ -14,7 +15,6 @@ import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.math.BigDecimal
-import java.math.BigInteger
 import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     var kalibracija = true
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -102,15 +103,15 @@ class MainActivity : AppCompatActivity() {
                     bluetooth.receiveData { data ->
                         runOnUiThread {
                             if (data != null) {
-                                ProcitajPodatke(String(data));
+                                ProcitajPodatke(String(data))
                                 brojac++
                                 if (brojac == 30) {
                                     Log.d(TAG, "GOTOVO")
-                                    IzracunajProsjek();
+                                    IzracunajProsjek()
                                     if (kalibracija == false) {
-                                        ProvjeriIstinu();
+                                        ProvjeriIstinu()
                                     }
-                                    kalibracija = false;
+                                    kalibracija = false
                                 }
                             } else
                                 tekst.text = "Error or thread interruption"
@@ -127,6 +128,7 @@ class MainActivity : AppCompatActivity() {
         }*/
     }
 
+    @SuppressLint("SetTextI18n")
     fun ProvjeriIstinu() {
         var detekcija = 0
         val TAG = "BluetoothConnection"
@@ -166,6 +168,7 @@ class MainActivity : AppCompatActivity() {
         }//laze
     }
 
+    @SuppressLint("SetTextI18n")
     fun IzracunajProsjek() {
         prosjek_bpm = (suma_bpm / 30).toBigDecimal().setScale(2, RoundingMode.HALF_UP)
         prosjek_res = suma_res.divide(BigDecimal.valueOf(30), 2, RoundingMode.HALF_UP)
