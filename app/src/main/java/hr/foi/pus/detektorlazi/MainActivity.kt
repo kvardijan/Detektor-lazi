@@ -139,19 +139,34 @@ class MainActivity : AppCompatActivity() {
 
         if (prosjek_bpm > BigDecimal.valueOf((cal_bpm+cal_bpm*0.07f).toDouble())){
             Log.d(TAG, "Pad na bpm")
+            avg_bpm.setTextColor(Color.RED)
             detekcija++
+        }else{
+            avg_bpm.setTextColor(Color.GRAY)
         }
+
         if (prosjek_res < BigDecimal.valueOf(1000000)){
             Log.d(TAG, "Pad na res")
+            avg_res.setTextColor(Color.RED)
             detekcija++
+        }else{
+            avg_res.setTextColor(Color.GRAY)
         }
+
         if (prosjek_hum > BigDecimal.valueOf((cal_hum+cal_hum*0.05f).toDouble())){
             Log.d(TAG, "Pad na hum")
+            avg_hum.setTextColor(Color.RED)
             detekcija++
+        }else{
+            avg_hum.setTextColor(Color.GRAY)
         }
+
         if (prosjek_temp > BigDecimal.valueOf((cal_temp+cal_temp*0.03f).toDouble())){
             Log.d(TAG, "Pad na temp")
+            avg_temp.setTextColor(Color.RED)
             detekcija++
+        }else{
+            avg_temp.setTextColor(Color.GRAY)
         }
 
         if(detekcija==0) {
