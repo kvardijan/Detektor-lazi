@@ -65,8 +65,6 @@ class MainActivity : AppCompatActivity() {
         avg_res = findViewById(R.id.txt_avg_res)
         rezultat = findViewById(R.id.txt_rezultat)
 
-
-
         button.setOnClickListener {
             suma_bpm = 0f
             suma_res = BigDecimal.valueOf(0.0)
@@ -74,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             suma_hum = 0f
             var brojac = 0
             val REQUEST_BLUETOOTH = 1
-            Log.d(TAG, "kliknut gumb kreni")
+
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.BLUETOOTH
@@ -98,7 +96,6 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, device.name + " " + device.address)
                 if (device.name == "Detektor laži") {
                     Log.d(TAG, device.name + " " + device.address)
-
 
                     bluetooth.connect(device.address, this)
                     bluetooth.stopNotThread()
