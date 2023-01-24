@@ -172,10 +172,10 @@ class MainActivity : AppCompatActivity() {
         prosjek_hum = (suma_hum / 30).toBigDecimal().setScale(2, RoundingMode.HALF_UP)
         prosjek_temp = (suma_temp / 30).toBigDecimal().setScale(2, RoundingMode.HALF_UP)
 
-        avg_bpm.text = prosjek_bpm.toString()
-        avg_res.text = prosjek_res.toString()
-        avg_hum.text = prosjek_hum.toString()
-        avg_temp.text = prosjek_temp.toString()
+        avg_bpm.text = "BPM:" + prosjek_bpm.toString()
+        avg_res.text = "R:" + prosjek_res.toString()
+        avg_hum.text = "H:" + prosjek_hum.toString()
+        avg_temp.text = "T:" + prosjek_temp.toString()
 
         if (kalibracija == true) {
             cal_bpm = suma_bpm / 30
